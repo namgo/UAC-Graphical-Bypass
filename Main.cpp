@@ -18,6 +18,7 @@ bool IsCurrentWindowBlank(HWND handle) {
 	return false;
 }
 
+
 int main() {
 	DWORD pid = 0;
 	DWORD old_pid = 0;
@@ -28,6 +29,7 @@ int main() {
 		// confirm that this is a new window
 		if (pid != old_pid) {
 			if (IsCurrentWindowBlank(handle)) {
+				std::wcout << handle << std::endl;
 				// current window is blank, let's try to enter our keys
 				Sleep(1000);
 				SendMessage(handle, WM_KEYDOWN, (WPARAM)VK_LEFT, 1);
