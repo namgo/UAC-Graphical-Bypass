@@ -5,8 +5,8 @@
 #include <tchar.h>
 #include <psapi.h>
 
+// Possibly find out what we can do to programatically decide if the current handle is a UAC prompt
 bool IsCurrentWindowBlank(HWND handle) {
-	// Possibly find out what we can do to programatically decide if the current handle is a UAC prompt
 	int bufsize = GetWindowTextLength(handle) + 1;
 	LPWSTR title = new WCHAR[bufsize];
 	GetWindowText(handle, title, bufsize);
@@ -15,9 +15,7 @@ bool IsCurrentWindowBlank(HWND handle) {
 	if ((lstrlenW(title) == 0) && (pid == 0)) {
 		return true;
 	}
-	else {
-		return false;
-	}
+	return false;
 }
 
 int main() {
